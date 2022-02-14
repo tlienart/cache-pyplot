@@ -15,8 +15,11 @@ jobs:
           path: |
                 ~/.julia/artifacts
                 ~/.julia/packages
-          key: ${{ runner.os }}-cache-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-cache-
+                !~/.julia/packages/PyPlot
+                !~/.julia/packages/PyCall
+                !~/.julia/packages/Conda
+          key: ${{ runner.os }}-cache2-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-cache2-
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
