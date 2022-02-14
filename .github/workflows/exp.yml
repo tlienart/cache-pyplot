@@ -18,16 +18,24 @@ jobs:
                 !~/.julia/packages/PyPlot
                 !~/.julia/packages/PyCall
                 !~/.julia/packages/Conda
-          key: ${{ runner.os }}-cache2-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-cache2-
+          key: ${{ runner.os }}-cache3-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-cache3-
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
         with:
           version: 1.7
 
+      # Python
+      - name: Install Python 🐍
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Python libs 🐍
+        run: pip install matplotlib
+
       - run: |
-             export PYTHON="";
+             export PYTHON=$(which python);
              julia -e '
                using Pkg; Pkg.add("PyPlot");
                using PyPlot;
