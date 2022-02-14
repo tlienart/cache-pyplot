@@ -16,8 +16,9 @@ jobs:
                 ~/.julia/artifacts
                 ~/.julia/packages
                 !~/.julia/conda
-          key: ${{ runner.os }}-cache4-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-cache4-
+                !~/.julia/packages/Conda
+          key: ${{ runner.os }}-cacheA-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-cacheA-
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
