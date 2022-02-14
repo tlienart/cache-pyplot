@@ -15,10 +15,8 @@ jobs:
           path: |
                 ~/.julia/artifacts
                 ~/.julia/packages
-                !~/.julia/conda
-                !~/.julia/packages/Conda
-          key: ${{ runner.os }}-cacheA-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-cacheA-
+          key: ${{ runner.os }}-cacheB-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-cacheB-
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
