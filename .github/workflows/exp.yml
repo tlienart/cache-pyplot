@@ -36,7 +36,7 @@ jobs:
       - run: |
              export PYTHON=$(which python);
              julia -e '
-               using Pkg; Pkg.add("PyPlot");
+               using Pkg; Pkg.add(["PyCall", "PyPlot"]); Pkg.build("PyCall");
                using PyPlot;
                plot(rand(4), rand(4));
                println("OK");'
