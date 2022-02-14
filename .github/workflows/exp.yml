@@ -39,5 +39,5 @@ jobs:
              julia -e '
                using Pkg; Pkg.add("PyPlot");
                using PyPlot;
-               plot(rand(6), rand(6));
+               plot(rand(7), rand(7));
                println("OK");'
