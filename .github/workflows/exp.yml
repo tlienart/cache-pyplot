@@ -15,8 +15,8 @@ jobs:
           path: |
                 ~/.julia/artifacts
                 ~/.julia/packages
-          key: ${{ runner.os }}-${{ env.CACHE_KEY }}-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-${{ env.CACHE_KEY }}-
+          key: ${{ runner.os }}-cache-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-cache-
 
       - name: Install Julia
         uses: julia-actions/setup-julia@v1
