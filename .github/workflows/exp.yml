@@ -1,0 +1,32 @@
+name: Experiment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache 📖
+        uses: actions/cache@v2
+        with:
+          path: |
+                ~/.julia/artifacts
+                ~/.julia/packages
+          key: ${{ runner.os }}-${{ env.CACHE_KEY }}-${{ github.sha }}
+          restore-keys: ${{ runner.os }}-${{ env.CACHE_KEY }}-
+
+      - name: Install Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: 1.7
+
+      - run: |
+             export PYTHON="";
+             julia -e '
+               using Pkg; Pkg.add("PyPlot");
+               using PyPlot;
+               plot(rand(4), rand(4));
+               println("OK");'
