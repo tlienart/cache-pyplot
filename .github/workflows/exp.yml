@@ -26,13 +26,13 @@ jobs:
         with:
           version: 1.7
 
-      - if: ${{ env.PYTHON_LIBS != "" }}
+      - if: ${{ env.PYTHON_LIBS != '' }}
         name: Install Python 🐍
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
 
-      - if: ${{ env.PYTHON_LIBS != "" }}
+      - if: ${{ env.PYTHON_LIBS != '' }}
         name: Installing Python packages 🐍
         run: pip install ${{ env.PYTHON_LIBS }}
 
