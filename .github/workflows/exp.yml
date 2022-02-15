@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  PYTHON_LIBS = "matplotlib pandas"
+
 jobs:
   experiment:
     runs-on: ubuntu-latest
@@ -23,18 +26,16 @@ jobs:
         with:
           version: 1.7
 
-      # Python
-      - name: Install Python 🐍
+      - if: ${{ env.PYTHON_LIBS != "" }}
+        name: Install Python 🐍
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-      - name: Python libs 🐍
-        run: pip install matplotlib
+        run: pip install ${{ env.PYTHON_LIBS }}
 
       - run: |
-             export PYTHON=$(which python);
              julia -e '
-               using Pkg; Pkg.add(["PyCall", "PyPlot"]); Pkg.build("PyCall");
-               using PyPlot;
+               using Pkg; Pkg.add("PyCall"); Pkg.build("PyCall");
+               Pkg.add("PyPlot"); using PyPlot;
                plot(rand(5), rand(5));
                println("OK");'
