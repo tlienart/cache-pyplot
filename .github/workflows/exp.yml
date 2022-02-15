@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PYTHON_LIBS = "matplotlib pandas"
+  PYTHON_LIBS: "matplotlib pandas"
 
 jobs:
   experiment:
